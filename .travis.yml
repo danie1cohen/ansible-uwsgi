@@ -37,13 +37,15 @@ script:
 
   - sudo cat /etc/nginx/sites-enabled/somesite.conf
 
+  - ls /etc/init | grep uwsgi
+
   - sudo cat /etc/init/django_demo-uwsgi.conf
 
   - sudo cat /opt/django_demo/django_demo_uwsgi.ini
 
   - "curl http://127.0.0.1/"
 
-  - sudo tail /var/log/nginx/errors.log
+  - sudo tail /var/log/nginx/error.log
 
   - sudo tail /var/log/upstart/django_demo-uwsgi.log
 
