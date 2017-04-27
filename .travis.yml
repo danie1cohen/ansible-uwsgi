@@ -37,6 +37,10 @@ script:
 
   - sudo cat /etc/nginx/sites-enabled/somesite.conf
 
+  - sudo cat /etc/init/uwsgi_test_project-uwsgi.conf
+
+  - ls /opt/uwsgi_test_project
+
   - curl http://localhost:80
 
   # Run again to test idempotence
