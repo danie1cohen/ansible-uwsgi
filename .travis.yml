@@ -43,7 +43,7 @@ script:
 
   - sudo cat /opt/django_demo/django_demo_uwsgi.ini
 
-  - "curl http://127.0.0.1/"
+  - "curl http://127.0.0.1/:8888"
 
   - sudo tail /var/log/nginx/error.log
 
@@ -58,7 +58,7 @@ script:
     && (echo 'Idempotence test: pass' && exit 0)
     || (echo 'Idempotence test: fail' && exit 1)
 
-after_success: chmod +x MERGE.sh && ./MERGE.sh $USERNAME $PASSWORD
+after_success: cp MERGE.sh ~/ && chmod +x ~/MERGE.sh && ~/MERGE.sh $USERNAME $PASSWORD
 
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/
