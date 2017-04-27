@@ -35,6 +35,10 @@ script:
 
   - ls /etc/nginx/sites-enabled
 
+  - cat /etc/nginx/sites-enable/somesite.conf
+
+  - curl http://localhost:80
+
   # Run again to test idempotence
   - >
     ansible-playbook -i tests/inventory tests/test.yml --connection=local
@@ -42,7 +46,7 @@ script:
     && (echo 'Idempotence test: pass' && exit 0)
     || (echo 'Idempotence test: fail' && exit 1)
 
-#after_success: ./MERGE.sh $USERNAME $PASSWORD
+after_success: chmod +x MERGE.sh && ./MERGE.sh $USERNAME $PASSWORD
 
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/
