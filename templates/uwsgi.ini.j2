@@ -1,0 +1,16 @@
+[uwsgi]
+;
+master = {% if uwsgi_master %}true
+{% else %}false
+{% endif %}
+workers = {{ uwsgi_workers }}
+;
+chdir = {{ uwsgi_chdir }}
+module = {{ uwsgi_module }}
+home = {{ uwsgi_python_home }}
+logto = {{ uwsgi_log_path }}
+;
+socket = {{ uwsgi_socket_path }}
+chmod-socket = {{ uwsgi_socket_mode }}
+chown-socket = {{ uwsgi_owner }}:{{ uwsgi_group }}
+vacuum = true

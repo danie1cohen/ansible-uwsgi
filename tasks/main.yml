@@ -1,0 +1,23 @@
+---
+# tasks file for uwsgi
+
+- name: install uwsgi globally
+  pip: name=uwsgi state=present
+  become: yes
+  when: virtualenv is not defined
+
+- name: install uwsgi in virtualenv
+  pip: name=uwsgi state=present virtualenv={{ virtualenv }}
+  when: virtualenv is defined
+
+- name: create uwsgi.ini
+  template: src=templates/uwsgi.ini.j2 dest={{ uwsgi_install_path }}/{{ uwsgi_project }}_uwsgi.ini
+  become: yes
+  notify:
+    - restart uwsgi
+
+- name: create upstart script
+  template: src=templates/uwsgi_upstart.conf.j2 dest=/etc/init/{{ uwsgi_service_name }}.conf
+  become: yes
+  notify:
+    - restart uwsgi

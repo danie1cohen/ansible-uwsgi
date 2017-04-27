@@ -1,0 +1,5 @@
+---
+# handlers file for uwsgi
+- name: restart uwsgi
+  service: name={{ uwsgi_service_name }} state=restarted
+  become: yes
