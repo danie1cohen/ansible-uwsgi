@@ -35,7 +35,7 @@ script:
 
   - ls /etc/nginx/sites-enabled
 
-  - cat /etc/nginx/sites-enable/somesite.conf
+  - cat /etc/nginx/sites-enabled/somesite.conf
 
   - curl http://localhost:80
 
