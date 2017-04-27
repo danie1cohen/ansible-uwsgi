@@ -4,7 +4,12 @@
   vars:
     django_repo: https://github.com/danie1cohen/django-demo.git
     project: django_demo
+    nginx_fqdn: localhost
+    nginx_ports:
+    - 80
+    - "[::]:80"
+    uwsgi_exec_path: "{{ virtualenv }}/bin/uwsgi"
   roles:
     - danie1cohen.django
     - danie1cohen.nginx
-    - uwsgi
+    - ansible-uwsgi
