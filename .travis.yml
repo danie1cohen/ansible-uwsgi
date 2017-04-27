@@ -41,7 +41,7 @@ script:
 
   - sudo cat /opt/uwsgi_test_project/uwsgi_test_project_uwsgi.ini
 
-  - curl http://localhost
+  - "curl http://localhost/"
 
   # Run again to test idempotence
   - >
