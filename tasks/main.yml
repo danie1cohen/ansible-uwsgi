@@ -10,6 +10,10 @@
   pip: name=uwsgi state=present virtualenv={{ virtualenv }}
   when: virtualenv is defined
 
+- name: confirm isntall path for uwsgi.ini exists
+  file: path={{ uwsgi_install_path }} state=directory
+  become: yes
+
 - name: create uwsgi.ini
   template: src=templates/uwsgi.ini.j2 dest={{ uwsgi_install_path }}/{{ uwsgi_project }}_uwsgi.ini
   become: yes
