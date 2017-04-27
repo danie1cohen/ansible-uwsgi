@@ -9,6 +9,11 @@
     - 80
     - "[::]:80"
     uwsgi_exec_path: "{{ virtualenv }}/bin/uwsgi"
+  post_tasks:
+    - ufw: rule=allow port=80
+      become: yes
+    - ufw: state=enabled
+      become: yes
   roles:
     - danie1cohen.django
     - danie1cohen.nginx
