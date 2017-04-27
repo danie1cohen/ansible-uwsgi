@@ -43,6 +43,12 @@ script:
 
   - "curl http://localhost/"
 
+  - sudo tail /var/log/nginx/errors.log
+
+  - sudo tail /var/log/upstart/uwsgi_test_project-uwsgi.log
+
+  - sudo tail /var/log/uwsgi_test_project_uwsgi.log
+
   # Run again to test idempotence
   - >
     ansible-playbook -i tests/inventory tests/test.yml --connection=local
