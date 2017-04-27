@@ -39,9 +39,9 @@ script:
 
   - sudo cat /etc/init/uwsgi_test_project-uwsgi.conf
 
-  - ls /opt/uwsgi_test_project
+  - sudo cat /opt/uwsgi_test_project/uwsgi_test_project_uwsgi.ini
 
-  - curl http://localhost:80
+  - curl http://localhost
 
   # Run again to test idempotence
   - >
