@@ -43,7 +43,7 @@ script:
 
   - sudo cat /opt/django_demo/django_demo_uwsgi.ini
 
-  - "curl http://127.0.0.1/:8888"
+  - "curl http://127.0.0.1:8888/"
 
   - sudo tail /var/log/nginx/error.log
 
