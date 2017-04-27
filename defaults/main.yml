@@ -1,8 +1,8 @@
 ---
 # defaults file for uwsgi
 uwsgi_project: uwsgi_test_project
-uwsgi_chdir: "{{ uwsgi_install_path }}/current"
 uwsgi_install_path: /opt/{{ uwsgi_project }}
+uwsgi_chdir: "{{ uwsgi_install_path }}/current"
 uwsgi_python_home: /home/{{ ansible_user_id }}/.virtualenvs/{{ uwsgi_project }}
 uwsgi_module: "{{ uwsgi_project }}.wsgi"
 uwsgi_exec_path: uwsgi

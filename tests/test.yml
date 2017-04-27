@@ -8,6 +8,7 @@
     nginx_ports:
     - 80
     - "[::]:80"
+    uswsgi_project: "{{ project }}"
     uwsgi_exec_path: "{{ virtualenv }}/bin/uwsgi"
     uwsgi_chdir: "{{ django_install_path }}/current"
     nginx_socket: unix://{{ uwsgi_socket_path }}
