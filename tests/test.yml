@@ -9,6 +9,7 @@
     - 80
     - "[::]:80"
     uwsgi_exec_path: "{{ virtualenv }}/bin/uwsgi"
+    uwsgi_chdir: "{{ django_install_path }}/current"
     nginx_socket: unix://{{ uwsgi_socket_path }}
   post_tasks:
     - ufw: rule=allow port=80
