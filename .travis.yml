@@ -43,13 +43,13 @@ script:
 
   - sudo cat /opt/django_demo/django_demo_uwsgi.ini
 
-  - "curl http://127.0.0.1:8888/"
-
   - sudo tail /var/log/nginx/error.log
 
   - sudo tail /var/log/upstart/django_demo-uwsgi.log
 
   - sudo tail /var/log/django_demo_uwsgi.log
+
+  - "curl http://127.0.0.1:8888/ | grep 200"
 
   # Run again to test idempotence
   - >
