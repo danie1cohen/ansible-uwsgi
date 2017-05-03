@@ -49,7 +49,9 @@ script:
 
   - sudo tail /var/log/django_demo_uwsgi.log
 
-  - "curl http://127.0.0.1:8888/ | grep 200"
+  - "curl http://localhost:8888/admin"
+
+  - "curl http://localhost:8888/admin | grep 200"
 
   # Run again to test idempotence
   - >
