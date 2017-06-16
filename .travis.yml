@@ -45,7 +45,7 @@ script:
 
   # check the status code response of the served page
   - "curl -v http://localhost:8888/"
-  - "curl -v http://localhost:8888/ | grep 200"
+  - "curl -v http://localhost:8888/ &> tmp && cat tmp | grep 200"
 
   # Run again to test idempotence
   - >

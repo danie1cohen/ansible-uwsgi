@@ -10,7 +10,7 @@
   pip: name=uwsgi state=present virtualenv={{ virtualenv }}
   when: virtualenv is defined
 
-- name: confirm isntall path for uwsgi.ini exists
+- name: confirm install path for uwsgi.ini exists
   file: path={{ uwsgi_install_path }} state=directory
   become: yes
 
