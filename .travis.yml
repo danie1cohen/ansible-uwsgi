@@ -33,25 +33,19 @@ script:
   # Run the role/playbook with ansible-playbook.
   - ansible-playbook tests/test.yml -i tests/inventory --connection=local
 
-  - ls /etc/nginx/sites-enabled
-
+  # view the generated configs
   - sudo cat /etc/nginx/sites-enabled/somesite.conf
-
-  - ls /etc/init | grep uwsgi
-
   - sudo cat /etc/init/django_demo-uwsgi.conf
-
   - sudo cat /opt/django_demo/django_demo_uwsgi.ini
 
+  # show logs
   - sudo tail /var/log/nginx/error.log
-
   - sudo tail /var/log/upstart/django_demo-uwsgi.log
-
   - sudo tail /var/log/django_demo_uwsgi.log
 
-  - "curl http://localhost:8888/"
-
-  - "curl http://localhost:8888/ | grep 200"
+  # check the status code response of the served page
+  - "curl -v http://localhost:8888/"
+  - "curl -v http://localhost:8888/ | grep 200"
 
   # Run again to test idempotence
   - >
