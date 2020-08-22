@@ -1,0 +1,21 @@
+[Unit]
+Description=UWSGI startup file for {{ uwsgi_project }}
+After=network.target
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=1
+User=root
+{% for key in uwsgi_env_vars.keys()|sort %}
+{% if uwsgi_env_vars[key] is string and '"' in uwsgi_env_vars[key] %}
+Environment="{{ key }}={{ uwsgi_env_vars[key] | replace('"', '\\"') }}"
+{% else %}
+Environment={{ key }}={{ uwsgi_env_vars[key] }}
+{% endif %}
+{% endfor %}
+ExecStart={{ uwsgi_exec_path }} --ini {{ uwsgi_install_path }}/{{ uwsgi_project }}_uwsgi.ini
+
+[Install]
+WantedBy=multi-user.target

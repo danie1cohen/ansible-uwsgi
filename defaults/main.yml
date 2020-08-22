@@ -17,3 +17,5 @@ uwsgi_socket_path: /tmp/{{ uwsgi_project }}.sock
 
 uwsgi_log_path: /var/log/{{ uwsgi_project }}_uwsgi.log
 uwsgi_service_name: "{{ uwsgi_project }}-uwsgi"
+
+uwsgi_env_vars: {}
